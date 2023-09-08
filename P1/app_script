@@ -1,0 +1,33 @@
+function setUpTrigger() {
+  // This is the name of the function below, change accordingly 
+  ScriptApp.newTrigger('Helping')
+  // Change ID
+  .forSpreadsheet('1-BLqWuOtrnY526VDNoPPtARNB5AIVO6-yzJWpiGZFI4')
+  .onEdit()
+  .create();
+}
+
+function Helping(e) {
+
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Sheet1')
+
+  // This is what gsheet give me
+  // "{\"authMode\":\"FULL\",\"oldValue\":\"Testing\",\"range\":{\"columnEnd\":2,\"columnStart\":2,\"rowEnd\":5,\"rowStart\":5},\"source\":{},\"triggerUid\":\"1679418403613915094\",\"user\":{\"email\":\"email@email.com\",\"nickname\":\"user.name\"},\"value\":\"Hi\"}"
+
+  // Get this by range, this is only a stub
+  var data = {
+    'idOp': 101,
+    'tasa': 10,
+    'email': "javieranavarretef@gmail.com",
+    "magic": JSON.stringify(e),
+  }
+
+  var options = {
+    'method': 'post',
+    'payload': JSON.stringify(data),
+    'contentType': 'application/json'
+  }
+
+  // TODO: change url
+  UrlFetchApp.fetch('https://webhook.site/59ca89b2-a43b-47a9-8333-49fe37a40691', options);
+}
