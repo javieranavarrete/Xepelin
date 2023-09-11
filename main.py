@@ -6,6 +6,7 @@ import requests
 import json
 from flask import Flask, request
 import gspread
+import chromedriver_binary
 
 gc = gspread.service_account(filename='credentials.json')
 sh = gc.open('P2').sheet1
